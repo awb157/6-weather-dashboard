@@ -27,6 +27,17 @@ function curentweather(lat,lon) {
     .then(response=>response.json())
     .then(data=>{
         console.log(data)
+var cityname=$("<h2>").text(data.name)
+var temp=$("<h3>").text("temp: "+data.main.temp)
+var humidity=$("<h3>").text("humidity: "+data.main.humidity
+)
+var windspeed=$("<h3>").text("windspeed:"+data.wind.speed)
+
+
+
+
+
+        $("#todayweather").append(cityname,temp,humidity,windspeed)
     })
 }
 
