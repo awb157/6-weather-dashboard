@@ -27,17 +27,19 @@ function curentweather(lat,lon) {
     .then(response=>response.json())
     .then(data=>{
         console.log(data)
+        var cardbox=$("div").addClass("card")
 var cityname=$("<h2>").text(data.name)
 var temp=$("<h3>").text("temp: "+data.main.temp)
 var humidity=$("<h3>").text("humidity: "+data.main.humidity
 )
+var date=$("<h3>").text(moment.unix(data.dt).format("MMMM,Do, YYYY"))
 var windspeed=$("<h3>").text("windspeed:"+data.wind.speed)
+var line=$("<hr>")
 
 
 
 
-
-        $("#todayweather").append(cityname,temp,humidity,windspeed)
+        $("#todayweather").append(cityname,date,temp,humidity,windspeed,line)
     })
 }
 
@@ -48,5 +50,20 @@ function forecast(lat,lon) {
     .then(response=>response.json())
     .then(data=>{
         console.log(data)
+for(var i=4;i<data.list.length;i=i+8){
+    var cardbox=$("div").addClass("card")
+var temp=$("<p>").text("temp: "+data.list[i].main.temp)
+var humidity=$("<p>").text("humidity:"+data.list[i].main.humidity)
+var wind=$("<p>").text("wind:"+data.list[i].wind.speed)
+var date=$("<h4>").text(moment.unix(data.list[i].dt).format("MMMM,Do, YYYY"))
+
+
+
+    $("#fiveforecast").append(date,temp,humidity,wind)
+}
+
     })
+
+
+
 }
