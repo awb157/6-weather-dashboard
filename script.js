@@ -5,9 +5,13 @@ $("#search-button").on("click",function (){
     var cityvalue=$("#search-value").val()
     console.log(cityvalue)
     coordinates(cityvalue)
+    addhistory (cityvalue)
 })
-
-
+coordinates("draper")
+function addhistory(city){
+    var button=$("<li>").text(city)
+    $(".history").append(button)
+}
 
 function coordinates(inputvalue) {
 
@@ -27,6 +31,7 @@ function curentweather(lat,lon) {
     .then(response=>response.json())
     .then(data=>{
         console.log(data)
+        $("#todayweather").empty()
         var cardbox=$("div").addClass("card")
 var cityname=$("<h2>").text(data.name)
 var temp=$("<h3>").text("temp: "+data.main.temp)
@@ -50,6 +55,7 @@ function forecast(lat,lon) {
     .then(response=>response.json())
     .then(data=>{
         console.log(data)
+        $("#fiveforecast").empty()
 for(var i=4;i<data.list.length;i=i+8){
     var cardbox=$("div").addClass("card")
 var temp=$("<p>").text("temp: "+data.list[i].main.temp)
