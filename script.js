@@ -15,7 +15,7 @@ function addhistory(city){
 
 function coordinates(inputvalue) {
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inputvalue}&limit=5&appid=${apikey}`) 
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputvalue}&limit=5&appid=${apikey}`) 
     .then(response=>response.json())
     .then(data=>{
         // console.log(data)
