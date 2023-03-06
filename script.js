@@ -57,7 +57,7 @@ function forecast(lat,lon) {
         console.log(data)
         $("#fiveforecast").empty()
 for(var i=4;i<data.list.length;i=i+8){
-    var cardbox=$("div").addClass("card")
+    var cardbox=$("div").addClass("col card bg-info")
 var temp=$("<p>").text("temp: "+data.list[i].main.temp)
 var humidity=$("<p>").text("humidity:"+data.list[i].main.humidity)
 var wind=$("<p>").text("wind:"+data.list[i].wind.speed)
